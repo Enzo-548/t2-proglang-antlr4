@@ -1,4 +1,4 @@
-package com.example;
+package com.proglangworkgroup;
 
 import org.junit.jupiter.api.Test;
 

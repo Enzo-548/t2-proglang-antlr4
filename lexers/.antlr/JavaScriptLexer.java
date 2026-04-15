@@ -1,4 +1,4 @@
-// Generated from /workspaces/t1-proglang-antlr4/antlr4-lexer-explr/src/main/antlr4/com/example/JavaScriptLexer.g4 by ANTLR 4.13.1
+// Generated from /workspaces/t1-proglang-antlr4/lexers/JavaScriptLexer.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

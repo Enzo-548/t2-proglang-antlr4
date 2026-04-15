@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.ArithmeticAppTest" time="0.124" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.ArithmeticAppTest" time="0.266" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="25"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="session.topDirectory" value="/workspaces/t1-proglang-antlr4/antlr4-lexer-explr"/>
     <property name="sun.boot.library.path" value="/usr/local/sdkman/candidates/java/25.0.1-ms/lib"/>
-    <property name="sun.java.command" value="/workspaces/t1-proglang-antlr4/antlr4-lexer-explr/target/surefire/surefirebooter-20260413142439114_3.jar /workspaces/t1-proglang-antlr4/antlr4-lexer-explr/target/surefire 2026-04-13T14-24-35_772-jvmRun1 surefire-20260413142439114_1tmp surefire_0-20260413142439114_2tmp"/>
+    <property name="sun.java.command" value="/workspaces/t1-proglang-antlr4/antlr4-lexer-explr/target/surefire/surefirebooter-20260414231401077_3.jar /workspaces/t1-proglang-antlr4/antlr4-lexer-explr/target/surefire 2026-04-14T23-14-00_498-jvmRun1 surefire-20260414231401077_1tmp surefire_0-20260414231401077_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/workspaces/t1-proglang-antlr4/antlr4-lexer-explr/target/test-classes:/workspaces/t1-proglang-antlr4/antlr4-lexer-explr/target/classes:/home/codespace/.m2/repository/org/antlr/antlr4/4.9.3/antlr4-4.9.3.jar:/home/codespace/.m2/repository/org/antlr/antlr4-runtime/4.9.3/antlr4-runtime-4.9.3.jar:/home/codespace/.m2/repository/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar:/home/codespace/.m2/repository/org/antlr/ST4/4.3.1/ST4-4.3.1.jar:/home/codespace/.m2/repository/org/abego/treelayout/org.abego.treelayout.core/1.0.3/org.abego.treelayout.core-1.0.3.jar:/home/codespace/.m2/repository/org/glassfish/javax.json/1.0.4/javax.json-1.0.4.jar:/home/codespace/.m2/repository/com/ibm/icu/icu4j/69.1/icu4j-69.1.jar:/home/codespace/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.10.0/junit-jupiter-api-5.10.0.jar:/home/codespace/.m2/repository/org/opentest4j/opentest4j/1.3.0/opentest4j-1.3.0.jar:/home/codespace/.m2/repository/org/junit/platform/junit-platform-commons/1.10.0/junit-platform-commons-1.10.0.jar:/home/codespace/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/codespace/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.10.0/junit-jupiter-engine-5.10.0.jar:/home/codespace/.m2/repository/org/junit/platform/junit-platform-engine/1.10.0/junit-platform-engine-1.10.0.jar:/home/codespace/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/workspaces/t1-proglang-antlr4/antlr4-lexer-explr/target/surefire/surefirebooter-20260413142439114_3.jar"/>
+    <property name="surefire.real.class.path" value="/workspaces/t1-proglang-antlr4/antlr4-lexer-explr/target/surefire/surefirebooter-20260414231401077_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="25.0.1+8-LTS"/>
     <property name="user.name" value="codespace"/>
@@ -55,5 +55,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="69.0"/>
   </properties>
-  <testcase name="testApp" classname="com.example.ArithmeticAppTest" time="0.079"/>
+  <testcase name="testApp" classname="com.example.ArithmeticAppTest" time="0.186"/>
 </testsuite>

@@ -1,0 +1,9 @@
+digraph ParseTree {
+  node [shape=none, fontname="Courier"];
+  rankdir=TB;
+  node0 [label="Expr"];
+  node0 -> node1;
+  node1 [label="Term"];
+  node1 -> node2;
+  node2 [label="Factor"];
+}

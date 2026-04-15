@@ -1,20 +1,23 @@
-package com.example;
+package com.proglangworkgroup;
 
+import org.antlr.v4.runtime.ANTLRErrorListener;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Lexer;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import org.antlr.v4.runtime.tree.Trees;
+
+import com.example.ArithmeticBaseListener;
+import com.example.ArithmeticLexer;
+import com.example.ArithmeticParser;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import javax.xml.transform.ErrorListener;
+
 import java.io.IOException;
-import org.antlr.v4.runtime.tree.ParseTree;
-import org.antlr.v4.runtime.tree.ParseTreeWalker;
-import org.antlr.v4.runtime.tree.Trees;
-import org.antlr.v4.runtime.tree.RuleNode;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 /**
  * A simple application to demonstrate the use of ANTLR for parsing arithmetic
@@ -121,6 +124,20 @@ public class ArithmeticApp {
         return id;
     }
 
+    public static void validateInput(String input) {
+        // Implement validation logic for the input expression
+        // For example, you could check for balanced parentheses, valid characters, etc.
+        ArithmeticLexer lexer = new ArithmeticLexer(CharStreams.fromString(input));
+        
+        while (lexer._hitEOF != true) 
+            {
+            lexer._token = lexer.nextToken();
+            
+            System.out.println("\nTOKEN ATUAL: " + lexer._token);
+            System.out.println(lexer._token.getType());
+            System.out.println("achei valido");lexer._token = lexer.nextToken();
+        } 
+    }
     /**
      * The main method serves as the entry point for the application.
      * It demonstrates the parsing of a simple arithmetic expression.
@@ -128,12 +145,13 @@ public class ArithmeticApp {
      * @param args Command-line arguments (not used).
      */
     public static void main(String[] args) {
-        System.out.println("Hello ANTLR!");
+        //System.out.println("Hello ANTLR!");
 
         // Example input expression
-        String input = "2";
+        String input = "";
 
         // Output the parse tree for the input expression
-        System.out.println(getTreeFromString(input)); // Prints the parse tree in LISP-like format
+        //System.out.println(getTreeFromString(input)); // Prints the parse tree in LISP-like format
+        validateInput(input);
     }
 }
