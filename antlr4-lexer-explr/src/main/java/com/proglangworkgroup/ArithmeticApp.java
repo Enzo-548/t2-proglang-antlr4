@@ -1,21 +1,18 @@
 package com.proglangworkgroup;
 
-import org.antlr.v4.runtime.ANTLRErrorListener;
+import org.antlr.v4.runtime.BaseErrorListener;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.Lexer;
+import org.antlr.v4.runtime.RecognitionException;
+import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 
-import com.example.ArithmeticBaseListener;
 import com.example.ArithmeticLexer;
 import com.example.ArithmeticParser;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-import javax.xml.transform.ErrorListener;
 
 import java.io.IOException;
 
@@ -123,35 +120,50 @@ public class ArithmeticApp {
 
         return id;
     }
-
-    public static void validateInput(String input) {
-        // Implement validation logic for the input expression
-        // For example, you could check for balanced parentheses, valid characters, etc.
+    
+    public static boolean validateInput(String input) {
         ArithmeticLexer lexer = new ArithmeticLexer(CharStreams.fromString(input));
-        
-        while (lexer._hitEOF != true) 
-            {
-            lexer._token = lexer.nextToken();
-            
-            System.out.println("\nTOKEN ATUAL: " + lexer._token);
-            System.out.println(lexer._token.getType());
-            System.out.println("achei valido");lexer._token = lexer.nextToken();
-        } 
-    }
-    /**
-     * The main method serves as the entry point for the application.
-     * It demonstrates the parsing of a simple arithmetic expression.
-     *
-     * @param args Command-line arguments (not used).
-     */
+
+        // flag de erro
+        final boolean[] hasError = { false };
+
+        // remove o listener padrão
+        lexer.removeErrorListeners();
+
+        // adiciona listener customizado
+        lexer.addErrorListener(new BaseErrorListener() {
+            @Override
+            public void syntaxError(
+                Recognizer<?, ?> recognizer,
+                Object offendingSymbol,
+                int line,
+                int charPositionInLine,
+                String msg,
+                RecognitionException e
+            ) {
+                hasError[0] = true;
+            }
+        });
+
+        // consome todos os tokens
+        while (true) {
+            Token t = lexer.nextToken();
+            if (t.getType() == Token.EOF) break;
+        }
+
+        return !hasError[0];
+
+
+
+        }
     public static void main(String[] args) {
         //System.out.println("Hello ANTLR!");
 
         // Example input expression
-        String input = "";
+        String input = "123";
 
         // Output the parse tree for the input expression
         //System.out.println(getTreeFromString(input)); // Prints the parse tree in LISP-like format
-        validateInput(input);
+        System.out.println(validateInput(input));
     }
 }
