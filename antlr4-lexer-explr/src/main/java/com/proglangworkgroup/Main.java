@@ -1,0 +1,7 @@
+package com.proglangworkgroup;
+
+public class Main {
+    public static void main(String args[]){
+        
+    }
+}

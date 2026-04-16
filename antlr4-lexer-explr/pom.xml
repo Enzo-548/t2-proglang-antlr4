@@ -52,7 +52,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.0.0</version>
                 <configuration>
-                    <mainClass>com.example.ArithmeticApp</mainClass>
+                    <mainClass>com.example.Main</mainClass>
                 </configuration>
             </plugin>
             <!-- Maven Compiler Plugin to support Java 21 -->

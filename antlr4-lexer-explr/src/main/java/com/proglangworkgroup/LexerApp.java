@@ -1,21 +1,16 @@
 package com.proglangworkgroup;
 
 import org.antlr.v4.runtime.BaseErrorListener;
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.Lexer;
+import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
-
-import com.example.ArithmeticLexer;
-import com.example.ArithmeticParser;
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import java.io.IOException;
-
 /**
  * A simple application to demonstrate the use of ANTLR for parsing arithmetic
  * expressions.
@@ -24,40 +19,14 @@ import java.io.IOException;
  * generated from the Arithmetic grammar, and outputs the resulting parse tree
  * in a LISP-like format.
  */
-public class ArithmeticApp {
+public class LexerApp {
 
     /**
      * Private constructor to prevent instantiation of this utility class.
      */
-    private ArithmeticApp() {
+    private LexerApp() {
     }
 
-    /**
-     * Parses the input string as an arithmetic expression and returns the
-     * corresponding parse tree.
-     *
-     * @param input The arithmetic expression to parse.
-     * @return The parse tree as a string in a LISP-like format.
-     */
-    public static String getTreeFromString(String input) {
-        // Step 1: Create an input stream from a string (or file)
-        ArithmeticLexer lexer = new ArithmeticLexer(CharStreams.fromString(input));
-
-        // Step 2: Create a token stream from the lexer
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
-
-        // Step 3: Create a parser from the token stream
-        ArithmeticParser parser = new ArithmeticParser(tokens);
-
-        // Step 4: Parse the input using a rule (start rule typically)
-        ParseTree tree = parser.expr(); // Replace 'expr' with your grammar's start rule
-
-        String filename = "example.dot";
-        saveParseTreeAsDot(tree, parser, filename);
-
-        // Step 5: Get the parse tree
-        return tree.toStringTree(parser);
-    }
 
     /**
      * Saves the parse tree of a given input as a DOT file.
@@ -75,7 +44,7 @@ public class ArithmeticApp {
      * @param filename The name of the file where the DOT representation should be
      *                 saved.
      */
-    public static void saveParseTreeAsDot(ParseTree tree, ArithmeticParser parser, String filename) {
+    public static void saveParseTreeAsDot(ParseTree tree, Parser parser, String filename) {
         try {
             // Convert the parse tree to a DOT representation
             StringBuilder dot = new StringBuilder();
@@ -103,7 +72,7 @@ public class ArithmeticApp {
      * @param id     The unique ID for the current node.
      * @return The next available unique ID for subsequent nodes.
      */
-    private static int toDot(ParseTree node, ArithmeticParser parser, StringBuilder dot, int id) {
+    private static int toDot(ParseTree node, Parser parser, StringBuilder dot, int id) {
         int nodeId = id;
 
         String nodeName = node.getClass().getSimpleName().replaceAll("Context$", "");
@@ -121,9 +90,7 @@ public class ArithmeticApp {
         return id;
     }
     
-    public static boolean validateInput(String input) {
-        ArithmeticLexer lexer = new ArithmeticLexer(CharStreams.fromString(input));
-
+    public static boolean validateInput(Lexer lexer) {
         // flag de erro
         final boolean[] hasError = { false };
 
@@ -152,18 +119,5 @@ public class ArithmeticApp {
         }
 
         return !hasError[0];
-
-
-
         }
-    public static void main(String[] args) {
-        //System.out.println("Hello ANTLR!");
-
-        // Example input expression
-        String input = "123";
-
-        // Output the parse tree for the input expression
-        //System.out.println(getTreeFromString(input)); // Prints the parse tree in LISP-like format
-        System.out.println(validateInput(input));
-    }
 }
