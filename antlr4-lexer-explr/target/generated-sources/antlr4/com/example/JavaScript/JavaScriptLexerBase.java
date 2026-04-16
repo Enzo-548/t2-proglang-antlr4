@@ -1,4 +1,4 @@
-package com.example;
+package com.example.JavaScript;
 import org.antlr.v4.runtime.*;
 
 import java.util.ArrayDeque;

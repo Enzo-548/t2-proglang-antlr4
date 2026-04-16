@@ -1,5 +1,5 @@
-// Generated from com/example/PythonLexer.g4 by ANTLR 4.9.3
-package com.example;
+// Generated from com/example/Python/PythonLexer.g4 by ANTLR 4.9.3
+package com.example.Python;
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
