@@ -90,34 +90,47 @@ public class LexerApp {
         return id;
     }
     
-    public static boolean validateInput(Lexer lexer) {
-        // flag de erro
-        final boolean[] hasError = { false };
+public static boolean validateInput(Lexer lexer, int expectedTokenType) {
+    final boolean[] hasError = { false };
 
-        // remove o listener padrão
-        lexer.removeErrorListeners();
+    lexer.removeErrorListeners();
 
-        // adiciona listener customizado
-        lexer.addErrorListener(new BaseErrorListener() {
-            @Override
-            public void syntaxError(
-                Recognizer<?, ?> recognizer,
-                Object offendingSymbol,
-                int line,
-                int charPositionInLine,
-                String msg,
-                RecognitionException e
-            ) {
-                hasError[0] = true;
-            }
-        });
+    lexer.addErrorListener(new BaseErrorListener() {
+        @Override
+        public void syntaxError(
+            Recognizer<?, ?> recognizer,
+            Object offendingSymbol,
+            int line,
+            int charPositionInLine,
+            String msg,
+            RecognitionException e
+        ) {
+            hasError[0] = true;
+        }
+    });
 
-        // consome todos os tokens
-        while (true) {
-            Token t = lexer.nextToken();
-            if (t.getType() == Token.EOF) break;
+    int tokenCount = 0;
+    Token token;
+
+    while (true) {
+        token = lexer.nextToken();
+
+        if (token.getType() == Token.EOF) break;
+
+        // 🚨 Se caiu no canal de erro → inválido
+        if (token.getChannel() == 2) { // ERROR channel
+            return false;
         }
 
-        return !hasError[0];
+        // 🚨 Se tipo inesperado
+        if (token.getType() != expectedTokenType) {
+            return false;
         }
+
+        tokenCount++;
+    }
+
+    // 🚨 Se não gerou exatamente 1 token válido
+    return !hasError[0] && tokenCount == 1;
+}
 }
