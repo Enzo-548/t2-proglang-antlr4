@@ -1,13 +1,28 @@
 package com.proglangworkgroup;
 
 import org.antlr.v4.runtime.CharStreams;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import com.example.JavaScript.JavaScriptLexer;
 
+import java.io.PrintWriter;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class JavaScriptLexerTest {
+
+    private static final String LOG_FILE = "logs/js-tests.log";
+
+    @BeforeAll
+    static void setup() throws Exception {
+        // limpa o arquivo antes de rodar os testes
+        new PrintWriter(LOG_FILE).close();
+    }
+
+    private void logHeader(String testName, String input) {
+        System.out.println("Running: " + testName);
+    }
 
     // ========================
     // FLOAT
@@ -15,26 +30,38 @@ public class JavaScriptLexerTest {
 
     @Test
     void jsFloatAccepted1() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString("10.50"));
-        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.DecimalLiteral));
+        String input = "10.50";
+        logHeader("jsFloatAccepted1", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.DecimalLiteral, LOG_FILE));
     }
 
     @Test
     void jsFloatAccepted2() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString(".25"));
-        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.DecimalLiteral));
+        String input = ".25";
+        logHeader("jsFloatAccepted2", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.DecimalLiteral, LOG_FILE));
     }
 
     @Test
     void jsFloatRejected1() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString("."));
-        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.DecimalLiteral));
+        String input = ".";
+        logHeader("jsFloatRejected1", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.DecimalLiteral, LOG_FILE));
     }
 
     @Test
     void jsFloatRejected2() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString("abc"));
-        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.DecimalLiteral));
+        String input = "abc";
+        logHeader("jsFloatRejected2", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.DecimalLiteral, LOG_FILE));
     }
 
     // ========================
@@ -43,26 +70,38 @@ public class JavaScriptLexerTest {
 
     @Test
     void jsStringAccepted1() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString("\"hello\""));
-        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.StringLiteral));
+        String input = "\"hello\"";
+        logHeader("jsStringAccepted1", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.StringLiteral, LOG_FILE));
     }
 
     @Test
     void jsStringAccepted2() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString("'world'"));
-        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.StringLiteral));
+        String input = "'world'";
+        logHeader("jsStringAccepted2", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.StringLiteral, LOG_FILE));
     }
 
     @Test
     void jsStringRejected1() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString("\"unclosed"));
-        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.StringLiteral));
+        String input = "\"unclosed";
+        logHeader("jsStringRejected1", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.StringLiteral, LOG_FILE));
     }
 
     @Test
     void jsStringRejected2() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString("f\"hello\""));
-        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.StringLiteral));
+        String input = "f\"hello\"";
+        logHeader("jsStringRejected2", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.StringLiteral, LOG_FILE));
     }
 
     // ========================
@@ -71,25 +110,37 @@ public class JavaScriptLexerTest {
 
     @Test
     void jsIdentifierAccepted1() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString("minhaVar"));
-        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.Identifier));
+        String input = "minhaVar";
+        logHeader("jsIdentifierAccepted1", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.Identifier, LOG_FILE));
     }
 
     @Test
     void jsIdentifierAccepted2() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString("$valor"));
-        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.Identifier));
+        String input = "$valor";
+        logHeader("jsIdentifierAccepted2", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertTrue(LexerApp.validateInput(lexer, JavaScriptLexer.Identifier, LOG_FILE));
     }
 
     @Test
     void jsIdentifierRejected1() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString("123abc"));
-        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.Identifier));
+        String input = "123abc";
+        logHeader("jsIdentifierRejected1", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.Identifier, LOG_FILE));
     }
 
     @Test
     void jsIdentifierRejected2() {
-        var lexer = new JavaScriptLexer(CharStreams.fromString("var"));
-        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.Identifier));
+        String input = "var";
+        logHeader("jsIdentifierRejected2", input);
+
+        var lexer = new JavaScriptLexer(CharStreams.fromString(input));
+        assertFalse(LexerApp.validateInput(lexer, JavaScriptLexer.Identifier, LOG_FILE));
     }
 }

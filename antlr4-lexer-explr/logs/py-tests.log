@@ -1,0 +1,112 @@
+=== LEXER ANALYSIS START ===
+[TOKEN] '10.5' -> FLOAT_NUMBER
+Expected token: FLOAT_NUMBER
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] '.75' -> FLOAT_NUMBER
+Expected token: FLOAT_NUMBER
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] '"hello"' -> STRING
+Expected token: STRING
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] ''''multi
+line'''' -> STRING
+Expected token: STRING
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] '10' -> DECIMAL_INTEGER
+[TOKEN] '_000' -> NAME
+[TOKEN] '.5' -> FLOAT_NUMBER
+Expected token: FLOAT_NUMBER
+Token count: 3
+Has error: false
+Matched expected: true
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] 'abc' -> NAME
+Expected token: FLOAT_NUMBER
+Token count: 1
+Has error: false
+Matched expected: false
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[LEXER ERROR] line 1:0 token recognition error at: '"unclosed'
+Expected token: STRING
+Token count: 0
+Has error: true
+Matched expected: false
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] 'hello' -> NAME
+Expected token: STRING
+Token count: 1
+Has error: false
+Matched expected: false
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] 'variavel' -> NAME
+Expected token: NAME
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] '_valor' -> NAME
+Expected token: NAME
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] '123' -> DECIMAL_INTEGER
+[TOKEN] 'abc' -> NAME
+Expected token: NAME
+Token count: 2
+Has error: false
+Matched expected: true
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] 'for' -> FOR
+Expected token: NAME
+Token count: 1
+Has error: false
+Matched expected: false
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+

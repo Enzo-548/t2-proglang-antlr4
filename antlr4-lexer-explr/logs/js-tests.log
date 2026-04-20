@@ -1,0 +1,111 @@
+=== LEXER ANALYSIS START ===
+[TOKEN] '10.50' -> DecimalLiteral
+Expected token: DecimalLiteral
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] '.25' -> DecimalLiteral
+Expected token: DecimalLiteral
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] '123' -> DecimalLiteral
+[TOKEN] 'abc' -> Identifier
+Expected token: Identifier
+Token count: 2
+Has error: false
+Matched expected: true
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] 'var' -> Var
+Expected token: Identifier
+Token count: 1
+Has error: false
+Matched expected: false
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] '.' -> Dot
+Expected token: DecimalLiteral
+Token count: 1
+Has error: false
+Matched expected: false
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] 'abc' -> Identifier
+Expected token: DecimalLiteral
+Token count: 1
+Has error: false
+Matched expected: false
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] '"hello"' -> StringLiteral
+Expected token: StringLiteral
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] ''world'' -> StringLiteral
+Expected token: StringLiteral
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] '"' -> UnexpectedCharacter
+[TOKEN] 'unclosed' -> Identifier
+Expected token: StringLiteral
+Token count: 2
+Has error: false
+Matched expected: false
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] 'f' -> Identifier
+[TOKEN] '"hello"' -> StringLiteral
+Expected token: StringLiteral
+Token count: 2
+Has error: false
+Matched expected: true
+FINAL RESULT: false
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] 'minhaVar' -> Identifier
+Expected token: Identifier
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+
+=== LEXER ANALYSIS START ===
+[TOKEN] '$valor' -> Identifier
+Expected token: Identifier
+Token count: 1
+Has error: false
+Matched expected: true
+FINAL RESULT: true
+=== LEXER ANALYSIS END ===
+

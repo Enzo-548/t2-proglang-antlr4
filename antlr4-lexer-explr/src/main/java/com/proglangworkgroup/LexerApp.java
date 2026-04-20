@@ -9,8 +9,9 @@ import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ParseTree;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 /**
  * A simple application to demonstrate the use of ANTLR for parsing arithmetic
  * expressions.
@@ -89,48 +90,65 @@ public class LexerApp {
 
         return id;
     }
-    
-public static boolean validateInput(Lexer lexer, int expectedTokenType) {
+
+public static boolean validateInput(Lexer lexer, int expectedTokenType, String logFilePath) {
     final boolean[] hasError = { false };
 
-    lexer.removeErrorListeners();
+    try (PrintWriter writer = new PrintWriter(new FileWriter(logFilePath, true))) {
 
-    lexer.addErrorListener(new BaseErrorListener() {
-        @Override
-        public void syntaxError(
-            Recognizer<?, ?> recognizer,
-            Object offendingSymbol,
-            int line,
-            int charPositionInLine,
-            String msg,
-            RecognitionException e
-        ) {
-            hasError[0] = true;
+        lexer.removeErrorListeners();
+
+        lexer.addErrorListener(new BaseErrorListener() {
+            @Override
+            public void syntaxError(
+                Recognizer<?, ?> recognizer,
+                Object offendingSymbol,
+                int line,
+                int charPositionInLine,
+                String msg,
+                RecognitionException e
+            ) {
+                hasError[0] = true;
+                writer.println("[LEXER ERROR] line " + line + ":" + charPositionInLine + " " + msg);
+            }
+        });
+
+        boolean matchedExpected = false;
+        int tokenCount = 0;
+
+        writer.println("=== LEXER ANALYSIS START ===");
+
+        while (true) {
+            Token t = lexer.nextToken();
+
+            if (t.getType() == Token.EOF) break;
+
+            tokenCount++;
+
+            String tokenName = lexer.getVocabulary().getSymbolicName(t.getType());
+
+            writer.println("[TOKEN] '" + t.getText() + "' -> " + tokenName);
+
+            if (t.getType() == expectedTokenType) {
+                matchedExpected = true;
+            }
         }
-    });
 
-    int tokenCount = 0;
-    Token token;
+        writer.println("Expected token: " +
+            lexer.getVocabulary().getSymbolicName(expectedTokenType));
+        writer.println("Token count: " + tokenCount);
+        writer.println("Has error: " + hasError[0]);
+        writer.println("Matched expected: " + matchedExpected);
 
-    while (true) {
-        token = lexer.nextToken();
+        boolean result = !hasError[0] && matchedExpected && tokenCount == 1;
 
-        if (token.getType() == Token.EOF) break;
+        writer.println("FINAL RESULT: " + result);
+        writer.println("=== LEXER ANALYSIS END ===\n");
 
-        // 🚨 Se caiu no canal de erro → inválido
-        if (token.getChannel() == 2) { // ERROR channel
-            return false;
+        return result;
+
+        } catch (IOException e) {
+            throw new RuntimeException("Erro ao escrever log", e);
         }
-
-        // 🚨 Se tipo inesperado
-        if (token.getType() != expectedTokenType) {
-            return false;
-        }
-
-        tokenCount++;
     }
-
-    // 🚨 Se não gerou exatamente 1 token válido
-    return !hasError[0] && tokenCount == 1;
-}
 }

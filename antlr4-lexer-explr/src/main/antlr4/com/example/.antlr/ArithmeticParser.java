@@ -1,5 +1,4 @@
-// Generated from com/example/Arithmetic.g4 by ANTLR 4.9.3
-package com.example;
+// Generated from /workspaces/t1-proglang-antlr4/antlr4-lexer-explr/src/main/antlr4/com/example/Arithmetic.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -9,9 +8,9 @@ import java.util.List;
 import java.util.Iterator;
 import java.util.ArrayList;
 
-@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
+@SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast", "CheckReturnValue"})
 public class ArithmeticParser extends Parser {
-	static { RuntimeMetaData.checkVersion("4.9.3", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.13.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -89,6 +88,7 @@ public class ArithmeticParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class ExprContext extends ParserRuleContext {
 		public List<TermContext> term() {
 			return getRuleContexts(TermContext.class);
@@ -100,14 +100,6 @@ public class ArithmeticParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_expr; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ArithmeticListener ) ((ArithmeticListener)listener).enterExpr(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ArithmeticListener ) ((ArithmeticListener)listener).exitExpr(this);
-		}
 	}
 
 	public final ExprContext expr() throws RecognitionException {
@@ -148,6 +140,7 @@ public class ArithmeticParser extends Parser {
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class TermContext extends ParserRuleContext {
 		public List<FactorContext> factor() {
 			return getRuleContexts(FactorContext.class);
@@ -159,14 +152,6 @@ public class ArithmeticParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_term; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ArithmeticListener ) ((ArithmeticListener)listener).enterTerm(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ArithmeticListener ) ((ArithmeticListener)listener).exitTerm(this);
-		}
 	}
 
 	public final TermContext term() throws RecognitionException {
@@ -207,6 +192,7 @@ public class ArithmeticParser extends Parser {
 		return _localctx;
 	}
 
+	@SuppressWarnings("CheckReturnValue")
 	public static class FactorContext extends ParserRuleContext {
 		public TerminalNode NUMBER() { return getToken(ArithmeticParser.NUMBER, 0); }
 		public ExprContext expr() {
@@ -216,14 +202,6 @@ public class ArithmeticParser extends Parser {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_factor; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ArithmeticListener ) ((ArithmeticListener)listener).enterFactor(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ArithmeticListener ) ((ArithmeticListener)listener).exitFactor(this);
-		}
 	}
 
 	public final FactorContext factor() throws RecognitionException {
@@ -267,15 +245,27 @@ public class ArithmeticParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\7 \4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\3\2\3\2\3\2\7\2\f\n\2\f\2\16\2\17\13\2\3\3\3\3\3\3\7\3\24\n"+
-		"\3\f\3\16\3\27\13\3\3\4\3\4\3\4\3\4\3\4\5\4\36\n\4\3\4\2\2\5\2\4\6\2\2"+
-		"\2\37\2\b\3\2\2\2\4\20\3\2\2\2\6\35\3\2\2\2\b\r\5\4\3\2\t\n\7\3\2\2\n"+
-		"\f\5\4\3\2\13\t\3\2\2\2\f\17\3\2\2\2\r\13\3\2\2\2\r\16\3\2\2\2\16\3\3"+
-		"\2\2\2\17\r\3\2\2\2\20\25\5\6\4\2\21\22\7\4\2\2\22\24\5\6\4\2\23\21\3"+
-		"\2\2\2\24\27\3\2\2\2\25\23\3\2\2\2\25\26\3\2\2\2\26\5\3\2\2\2\27\25\3"+
-		"\2\2\2\30\36\7\7\2\2\31\32\7\5\2\2\32\33\5\2\2\2\33\34\7\6\2\2\34\36\3"+
-		"\2\2\2\35\30\3\2\2\2\35\31\3\2\2\2\36\7\3\2\2\2\5\r\25\35";
+		"\u0004\u0001\u0005\u001e\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
+		"\u0002\u0002\u0007\u0002\u0001\u0000\u0001\u0000\u0001\u0000\u0005\u0000"+
+		"\n\b\u0000\n\u0000\f\u0000\r\t\u0000\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0005\u0001\u0012\b\u0001\n\u0001\f\u0001\u0015\t\u0001\u0001\u0002\u0001"+
+		"\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0003\u0002\u001c\b\u0002\u0001"+
+		"\u0002\u0000\u0000\u0003\u0000\u0002\u0004\u0000\u0000\u001d\u0000\u0006"+
+		"\u0001\u0000\u0000\u0000\u0002\u000e\u0001\u0000\u0000\u0000\u0004\u001b"+
+		"\u0001\u0000\u0000\u0000\u0006\u000b\u0003\u0002\u0001\u0000\u0007\b\u0005"+
+		"\u0001\u0000\u0000\b\n\u0003\u0002\u0001\u0000\t\u0007\u0001\u0000\u0000"+
+		"\u0000\n\r\u0001\u0000\u0000\u0000\u000b\t\u0001\u0000\u0000\u0000\u000b"+
+		"\f\u0001\u0000\u0000\u0000\f\u0001\u0001\u0000\u0000\u0000\r\u000b\u0001"+
+		"\u0000\u0000\u0000\u000e\u0013\u0003\u0004\u0002\u0000\u000f\u0010\u0005"+
+		"\u0002\u0000\u0000\u0010\u0012\u0003\u0004\u0002\u0000\u0011\u000f\u0001"+
+		"\u0000\u0000\u0000\u0012\u0015\u0001\u0000\u0000\u0000\u0013\u0011\u0001"+
+		"\u0000\u0000\u0000\u0013\u0014\u0001\u0000\u0000\u0000\u0014\u0003\u0001"+
+		"\u0000\u0000\u0000\u0015\u0013\u0001\u0000\u0000\u0000\u0016\u001c\u0005"+
+		"\u0005\u0000\u0000\u0017\u0018\u0005\u0003\u0000\u0000\u0018\u0019\u0003"+
+		"\u0000\u0000\u0000\u0019\u001a\u0005\u0004\u0000\u0000\u001a\u001c\u0001"+
+		"\u0000\u0000\u0000\u001b\u0016\u0001\u0000\u0000\u0000\u001b\u0017\u0001"+
+		"\u0000\u0000\u0000\u001c\u0005\u0001\u0000\u0000\u0000\u0003\u000b\u0013"+
+		"\u001b";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
